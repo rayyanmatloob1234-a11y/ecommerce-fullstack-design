@@ -36,30 +36,30 @@ const categories = [
 
 const CategorySection = () => {
   return (
-    <div className="mx-6 my-4 flex flex-col gap-4">
+    <div className="mx-4 md:mx-6 my-4 flex flex-col gap-4">
       {categories.map((cat) => (
-        <div key={cat.title} className={`${cat.color} rounded p-4 flex gap-4`}>
-          
+        <div key={cat.title} className={`${cat.color} rounded-xl shadow-sm p-4 flex flex-col md:flex-row gap-4`}>
+
           {/* Left - Category Title */}
-          <div className="w-40 shrink-0 flex flex-col justify-between">
+          <div className="md:w-40 shrink-0 flex flex-row md:flex-col justify-between md:justify-start gap-4 md:gap-0">
             <div>
-              <h3 className="font-semibold text-gray-800">{cat.title}</h3>
-              <div className="text-5xl mt-3">{cat.image}</div>
+              <h3 className="font-bold text-gray-800">{cat.title}</h3>
+              <div className="text-4xl mt-2 hidden md:block">{cat.image}</div>
             </div>
             <Link to="/products">
-              <button className="mt-4 border border-gray-400 text-gray-700 px-3 py-1.5 rounded text-sm hover:bg-white">
+              <button className="border border-gray-400 text-gray-700 px-3 py-1.5 rounded-lg text-sm hover:bg-white transition">
                 Source now
               </button>
             </Link>
           </div>
 
           {/* Right - Product Grid */}
-          <div className="grid grid-cols-4 gap-3 flex-1">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 flex-1">
             {cat.items.map((item) => (
-              <Link to="/products" key={item.name}>
-                <div className="bg-white rounded p-3 text-sm hover:shadow cursor-pointer">
+              <Link to="/products" key={item.name + item.emoji}>
+                <div className="bg-white rounded-xl p-3 text-sm hover:shadow-md cursor-pointer transition-all">
                   <div className="text-3xl mb-1">{item.emoji}</div>
-                  <p className="text-gray-800 font-medium">{item.name}</p>
+                  <p className="text-gray-800 font-semibold">{item.name}</p>
                   <p className="text-gray-400 text-xs">{item.price}</p>
                 </div>
               </Link>

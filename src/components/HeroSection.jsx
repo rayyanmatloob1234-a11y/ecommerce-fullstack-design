@@ -3,62 +3,74 @@ import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   return (
-    <div className="bg-gray-100 px-6 py-4">
-      <div className="flex gap-4">
-        
-        {/* Left Category Sidebar */}
-        <div className="bg-white w-48 shrink-0 rounded p-3 text-sm">
-          <ul className="space-y-2 text-gray-700">
-            <li className="font-semibold text-blue-600 cursor-pointer">Automobiles</li>
-            <li className="cursor-pointer hover:text-blue-600">Clothes and wear</li>
-            <li className="cursor-pointer hover:text-blue-600">Home interiors</li>
-            <li className="cursor-pointer hover:text-blue-600">Computer and tech</li>
-            <li className="cursor-pointer hover:text-blue-600">Tools, equipments</li>
-            <li className="cursor-pointer hover:text-blue-600">Sports and outdoor</li>
-            <li className="cursor-pointer hover:text-blue-600">Animal and pets</li>
-            <li className="cursor-pointer hover:text-blue-600">Machinery tools</li>
-            <li className="cursor-pointer hover:text-blue-600">More category</li>
+    <div className="bg-gray-100 px-4 md:px-8 py-4">
+      <div className="flex flex-col md:flex-row gap-4">
+
+        {/* Left Category Sidebar - hidden on mobile */}
+        <div className="hidden md:block bg-white w-52 shrink-0 rounded-xl shadow-sm p-4 text-sm">
+          <ul className="space-y-1">
+            {[
+              'Automobiles',
+              'Clothes and wear',
+              'Home interiors',
+              'Computer and tech',
+              'Tools, equipments',
+              'Sports and outdoor',
+              'Animal and pets',
+              'Machinery tools',
+              'More category',
+            ].map((cat, i) => (
+              <li
+                key={cat}
+                className={`px-3 py-2 rounded-lg cursor-pointer transition-colors ${
+                  i === 0
+                    ? 'bg-blue-50 text-blue-600 font-semibold'
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600'
+                }`}
+              >
+                {cat}
+              </li>
+            ))}
           </ul>
         </div>
 
         {/* Middle Banner */}
-        <div className="flex-1 bg-teal-400 rounded p-8 flex items-center justify-between">
-          <div>
-            <p className="text-white text-sm">Latest trending</p>
-            <h2 className="text-white text-3xl font-bold mt-1">Electronic items</h2>
-            <button className="mt-4 bg-white text-gray-800 px-4 py-2 rounded text-sm font-medium hover:bg-gray-100">
-              Learn more
-            </button>
+        <div className="flex-1 bg-gradient-to-r from-teal-400 to-teal-500 rounded-xl shadow-sm p-8 md:p-10 flex items-center justify-between overflow-hidden relative min-h-48">
+          <div className="relative z-10">
+            <p className="text-teal-100 text-sm font-medium">Latest trending</p>
+            <h2 className="text-white text-3xl md:text-4xl font-extrabold mt-1 leading-tight">
+              Electronic <br /> items
+            </h2>
+            <Link to="/products">
+              <button className="mt-5 bg-white text-gray-800 px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-gray-100 transition shadow">
+                Learn more
+              </button>
+            </Link>
           </div>
-          <div className="text-8xl">🎧</div>
+          <div className="text-8xl md:text-9xl opacity-90 absolute right-6 md:right-10">🎧</div>
         </div>
 
-        {/* Right Panel */}
-        <div className="w-44 shrink-0 flex flex-col gap-3">
-          {/* User login box */}
-          <div className="bg-white rounded p-3 text-sm">
-            <p className="text-gray-600">Hi, user</p>
-            <p className="font-semibold text-gray-800">let's get started</p>
+        {/* Right Panel - hidden on mobile */}
+        <div className="hidden md:flex w-48 shrink-0 flex-col gap-3">
+          <div className="bg-white rounded-xl shadow-sm p-4 text-sm">
+            <p className="text-gray-500 text-xs">Hi, user</p>
+            <p className="font-bold text-gray-800 mt-0.5">let's get started</p>
             <Link to="/">
-              <button className="w-full mt-2 bg-blue-600 text-white py-1.5 rounded text-sm hover:bg-blue-700">
+              <button className="w-full mt-3 bg-blue-600 text-white py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition shadow-sm">
                 Join now
               </button>
             </Link>
             <Link to="/">
-              <button className="w-full mt-2 border border-blue-600 text-blue-600 py-1.5 rounded text-sm hover:bg-blue-50">
+              <button className="w-full mt-2 border border-blue-600 text-blue-600 py-2 rounded-lg text-sm font-semibold hover:bg-blue-50 transition">
                 Log in
               </button>
             </Link>
           </div>
-
-          {/* Promo box 1 */}
-          <div className="bg-orange-400 rounded p-3 text-sm text-white">
-            <p className="font-semibold">Get US $10 off with a new supplier</p>
+          <div className="bg-gradient-to-br from-orange-400 to-orange-500 rounded-xl shadow-sm p-4 text-sm text-white">
+            <p className="font-bold leading-snug">Get US $10 off with a new supplier</p>
           </div>
-
-          {/* Promo box 2 */}
-          <div className="bg-teal-500 rounded p-3 text-sm text-white">
-            <p className="font-semibold">Send quotes with supplier preferences</p>
+          <div className="bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl shadow-sm p-4 text-sm text-white">
+            <p className="font-bold leading-snug">Send quotes with supplier preferences</p>
           </div>
         </div>
 

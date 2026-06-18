@@ -16,14 +16,14 @@ const products = [
 
 const RecommendedItems = () => {
   return (
-    <div className="mx-6 my-4 bg-white rounded p-4">
-      <h3 className="font-semibold text-gray-800 mb-4">Recommended items</h3>
+    <div className="mx-4 md:mx-6 my-4 bg-white rounded-xl shadow-sm p-4">
+      <h3 className="font-bold text-gray-800 mb-4 text-lg">Recommended items</h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
         {products.map((product) => (
           <Link to={`/product/${product.id}`} key={product.id}>
-            <div className="border rounded p-3 hover:shadow cursor-pointer">
+            <div className="border rounded-xl p-3 hover:shadow-md cursor-pointer transition-all hover:border-blue-200">
               <div className="text-5xl mb-3 text-center">{product.emoji}</div>
-              <p className="text-gray-800 font-semibold text-sm">{product.price}</p>
+              <p className="text-gray-800 font-bold text-sm">{product.price}</p>
               <p className="text-gray-400 text-xs mt-1">{product.name}</p>
             </div>
           </Link>
